@@ -29,6 +29,16 @@ export default class Pusher extends Component {
     this.unbindPusherEvent(channel, event);
   }
 
+  componentDidUpdate({ channel: oldChannel, event: oldEvent }) {
+    const { channel, event } = this.props;
+    if (channel === oldChannel && event === oldEvent) {
+      return;
+    }
+
+    this.bindPusherEvent(channel, event);
+    this.unbindPusherEvent(oldChannel, oldEvent);
+  }
+
   componentWillUnmount() {
     this.unbindPusherEvent(this.props.channel, this.props.event);
   }
