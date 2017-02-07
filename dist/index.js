@@ -38,26 +38,6 @@ var Pusher = function (_Component) {
   }
 
   _createClass(Pusher, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      console.log('componentWillMount');
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      console.log('componentDidMount');
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {
-      console.log('componentWillUpdate');
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      console.log('componentDidUpdate');
-    }
-  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(_ref) {
       var newChannel = _ref.channel,
@@ -66,45 +46,19 @@ var Pusher = function (_Component) {
           channel = _props.channel,
           event = _props.event;
 
-      console.log('componentWillReceiveProps');
-      console.log('newChannel', newChannel);
-      console.log('newEvent', newEvent);
-      console.log('channel', channel);
-      console.log('event', event);
+      console.log('UPDATE');
+      console.log(newChannel);
+      console.log(channel);
       if (channel === newChannel && event === newEvent) {
         return;
       }
 
-      this.bindPusherEvent(newChannel, newEvent);
       this.unbindPusherEvent(channel, event);
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(_ref2) {
-      var oldChannel = _ref2.channel,
-          oldEvent = _ref2.event;
-      var _props2 = this.props,
-          channel = _props2.channel,
-          event = _props2.event;
-
-
-      console.log('componentDidUpdate');
-      console.log('oldChannel', oldChannel);
-      console.log('oldEvent', oldEvent);
-      console.log('channel', channel);
-      console.log('event', event);
-
-      if (channel === oldChannel && event === oldEvent) {
-        return;
-      }
-
-      this.bindPusherEvent(channel, event);
-      this.unbindPusherEvent(oldChannel, oldEvent);
+      this.bindPusherEvent(newChannel, newEvent);
     }
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      console.log('componentWillUnmount');
       this.unbindPusherEvent(this.props.channel, this.props.event);
     }
   }, {
