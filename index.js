@@ -19,8 +19,29 @@ export default class Pusher extends Component {
     this.bindPusherEvent(props.channel, props.event);
   }
 
+  componentWillMount() {
+    console.log('componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount')
+  }
+
+  componentWillUpdate () {
+    console.log('componentWillUpdate')
+  }
+
+  componentDidUpdate () {
+    console.log('componentDidUpdate')
+  }
+
   componentWillReceiveProps({ channel: newChannel, event: newEvent }) {
     const { channel, event } = this.props;
+    console.log('componentWillReceiveProps')
+    console.log('newChannel', newChannel)
+    console.log('newEvent', newEvent)
+    console.log('channel', channel)
+    console.log('event', event)
     if (channel === newChannel && event === newEvent) {
       return;
     }
@@ -31,6 +52,13 @@ export default class Pusher extends Component {
 
   componentDidUpdate({ channel: oldChannel, event: oldEvent }) {
     const { channel, event } = this.props;
+
+    console.log('componentDidUpdate')
+    console.log('oldChannel', oldChannel)
+    console.log('oldEvent', oldEvent)
+    console.log('channel', channel)
+    console.log('event', event)
+
     if (channel === oldChannel && event === oldEvent) {
       return;
     }
@@ -40,6 +68,7 @@ export default class Pusher extends Component {
   }
 
   componentWillUnmount() {
+    console.log('componentWillUnmount')
     this.unbindPusherEvent(this.props.channel, this.props.event);
   }
 
