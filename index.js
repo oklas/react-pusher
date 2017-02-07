@@ -21,9 +21,6 @@ export default class Pusher extends Component {
 
   componentWillReceiveProps({ channel: newChannel, event: newEvent }) {
     const { channel, event } = this.props;
-    console.log('UPDATE')
-    console.log(newChannel)
-    console.log(channel)
     if (channel === newChannel && event === newEvent) {
       return;
     }

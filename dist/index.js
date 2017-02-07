@@ -46,9 +46,6 @@ var Pusher = function (_Component) {
           channel = _props.channel,
           event = _props.event;
 
-      console.log('UPDATE');
-      console.log(newChannel);
-      console.log(channel);
       if (channel === newChannel && event === newEvent) {
         return;
       }
