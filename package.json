@@ -7,7 +7,7 @@
   "scripts": {
     "test": "npm test",
     "prepublish": "npm run build",
-    "build": "babel ./index.js ./dist"
+    "build": "$(npm bin)/babel ./index.js --out-file ./dist/index.js"
   },
   "keywords": [
     "pusher",
