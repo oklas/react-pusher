@@ -16,7 +16,7 @@ export default class Pusher extends Component {
     }
 
     super(props);
-    this.bindPusherEvent(props.channel, props.event);
+    // this.bindPusherEvent(props.channel, props.event);
   }
 
   componentWillReceiveProps({ channel: newChannel, event: newEvent }) {
@@ -31,6 +31,10 @@ export default class Pusher extends Component {
 
   componentWillUnmount() {
     this.unbindPusherEvent(this.props.channel, this.props.event);
+  }
+
+  componentDidMount() {
+    this.bindPusherEvent(this.props.channel, this.props.event);
   }
 
   unbindPusherEvent(channel, event) {

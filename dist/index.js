@@ -29,11 +29,10 @@ var Pusher = function (_Component) {
       throw new Error('you must set a pusherClient by calling setPusherClient');
     }
 
+    // this.bindPusherEvent(props.channel, props.event);
     var _this = _possibleConstructorReturn(this, (Pusher.__proto__ || Object.getPrototypeOf(Pusher)).call(this, props));
 
     _this._channel = null;
-
-    _this.bindPusherEvent(props.channel, props.event);
     return _this;
   }
 
@@ -57,6 +56,11 @@ var Pusher = function (_Component) {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       this.unbindPusherEvent(this.props.channel, this.props.event);
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.bindPusherEvent(this.props.channel, this.props.event);
     }
   }, {
     key: 'unbindPusherEvent',
